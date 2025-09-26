@@ -1,0 +1,4 @@
+# Ignore the bigger files such as FMUs
+*.fmu
+*.zip
+samples/dist/
