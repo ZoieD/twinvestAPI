@@ -2,3 +2,4 @@
 *.fmu
 *.zip
 samples/dist/
+target
