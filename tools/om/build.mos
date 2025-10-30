@@ -1,0 +1,54 @@
+// tools/om/build.mos
+setCommandLineOptions("--std=3.3");
+getErrorString();
+
+loadFile("models.mo");
+getErrorString();
+
+installPackage(Modelica);
+getErrorString();
+loadModel(Modelica);
+getErrorString();
+
+// create output folder
+system("mkdir -p out");
+getErrorString();
+
+// generate WindIn FMU
+buildModelFMU(TwinvestWindFMUs.WindIn, version="2.0", fmuType="cs");
+getErrorString();
+system("mv WindIn.fmu out/TwinvestWindFMUs_WindIn.fmu");
+system("rm -f TwinvestWindFMUs_WindIn*");
+getErrorString();
+
+// generate PriceIn FMU
+buildModelFMU(TwinvestWindFMUs.PriceIn, version="2.0", fmuType="cs");
+getErrorString();
+system("mv PriceIn.fmu out/TwinvestWindFMUs_PriceIn.fmu");
+system("rm -f TwinvestWindFMUs_PriceIn*");
+getErrorString();
+
+// generate WakeGain FMU
+buildModelFMU(TwinvestWindFMUs.WakeGain, version="2.0", fmuType="cs");
+getErrorString();
+system("mv WakeGain.fmu out/TwinvestWindFMUs_WakeGain.fmu");
+system("rm -f TwinvestWindFMUs_WakeGain*");
+getErrorString();
+
+// generate TurbinePoly FMU
+buildModelFMU(TwinvestWindFMUs.TurbinePoly, version="2.0", fmuType="cs");
+getErrorString();
+system("mv TurbinePoly.fmu out/TwinvestWindFMUs_TurbinePoly.fmu");
+system("rm -f TwinvestWindFMUs_TurbinePoly*");
+getErrorString();
+
+// generate Sum2 FMU
+buildModelFMU(TwinvestWindFMUs.Sum2, version="2.0", fmuType="cs");
+getErrorString();
+system("mv Sum2.fmu out/TwinvestWindFMUs_Sum2.fmu");
+system("rm -f TwinvestWindFMUs_Sum2*");
+getErrorString();
+
+// clear the
+system("rm -f *.log *.libs *.makefile *_info.json");
+getErrorString();
