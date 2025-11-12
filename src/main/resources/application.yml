@@ -30,6 +30,9 @@ worker:
   base-url: http://worker:9000
 
 twinvest:
+  simworker:
+    enabled: true # closed for first stage, change to true if run the co-simulation
+    baseUrl: http://localhost:8001
   storage:
     # use env var TWINVEST_STORAGE if present, else default to ./data/artifacts
     baseDir: ${TWINVEST_STORAGE:./data/artifacts}

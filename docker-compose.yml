@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  sim-worker:
+    build:
+      context: ./sim-worker
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    ports:
+      - "8001:8001"
+  # Java service can run locally or put in compose later：
+  # api:
+  #   build: .
+  #   ports: ["8080:8080"]

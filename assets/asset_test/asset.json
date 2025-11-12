@@ -1,0 +1,26 @@
+{
+  "name": "Windfarm SSP Demo",
+  "version": "1.0.0",
+  "ssp": { "path": "ssp/MyWindfarm.ssp" },
+
+  "expose": [
+    { "comp": "t1", "var": "P" },
+    { "comp": "t2", "var": "P" }
+  ],
+
+  "bindings": [
+    { "scenarioKey": "windSpeed",   "to": { "comp": "wind",  "var": "table.u" } },
+    { "scenarioKey": "priceEurMwh", "to": { "comp": "price", "var": "table.u" } }
+  ],
+
+  "defaults": {
+    "communicationStepSize": 1.0
+  },
+
+  "scenarios": {
+    "default": { "type": "csv",
+      "wind":  "resources/wind.csv",
+      "price": "resources/price.csv"
+    }
+  }
+}
